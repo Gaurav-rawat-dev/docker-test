@@ -19,7 +19,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Sample route
 app.get('/', (req, res) => {
-  res.send(`Hello, World! Running in ${NODE_ENV} mode.`);
+  res.send(`Hello, World! Running in ${NODE_ENV}.`);
 });
 
 // Start the server
