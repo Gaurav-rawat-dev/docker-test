@@ -1,0 +1,4 @@
+docker image command : docker build -t node_image .
+docker run container  : docker run -d -v "${PWD}:/app" -v /app/node_modules -p 3000:3000 --name node-container node-image
+3 : if want to set the env vsriable in node application, then need to append one flag which is --env-file path to env file, which is --env-file ./.env
+4 :  to reduce the lenght of the docker command to run the container bcs we will be dealing with more than 1 container while owrking on node js app, hence introduced docker-compose.yml
