@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: node-container
+    image: node-image
+    build: .
+    # ports:
+    #   - "3000:3000" # Exposes Node.js application on port 3000
+    # volumes:
+    #   - .:/app # Bind mount for real-time development
+    #   - /app/node_modules # Prevent overwriting node_modules
+    env_file:
+      - ./.env # Load environment variables from .env file
+    # depends_on:
+    #   - mongodb
+    #   - redis
+    # command: npm run dev # Start with nodemon for auto-reloading
