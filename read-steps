@@ -1,4 +1,20 @@
 docker image command : docker build -t node_image .
 docker run container  : docker run -d -v "${PWD}:/app" -v /app/node_modules -p 3000:3000 --name node-container node-image
+
+
 3 : if want to set the env vsriable in node application, then need to append one flag which is --env-file path to env file, which is --env-file ./.env
 4 :  to reduce the lenght of the docker command to run the container bcs we will be dealing with more than 1 container while owrking on node js app, hence introduced docker-compose.yml
+5 : in case whrn we want to down he container we can use the commad docker-compose down -v (-v will delett he unnecessary volumes created)
+6 : if want to run the new container with new image maiig some cahnges in the docker file or the code, then docer compsoe is pretty dumb, we have to mention that it is an new image 
+   so the d=command will be docker-compose  up -d --build
+
+   ==============================development VS production ==================================
+
+   create docker compose file one  form developmment and one for production
+
+   so when working in development env , we will be having 2 docker compose files , one for developemt and one for production, 
+
+   step one  : create docker  compose file, create docker compose development file and docker compose production file, 
+   now whenever we will run the development file , we will be using the command 
+   docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d 
+   so this command will run the : docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build 

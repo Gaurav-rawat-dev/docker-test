@@ -6,7 +6,7 @@ const app = express();
 
 // Use environment variables
 // const PORT = process.env.PORT || 3000;
-const PORT = 3000
+const PORT = 4000
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Middleware to log requests (only in development)
@@ -24,5 +24,5 @@ app.get('/', (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log('Server is running on port 3000');
+  console.log(`Express Server is running on port ${PORT}`);
 });
