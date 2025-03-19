@@ -10,9 +10,22 @@ services:
     volumes:
       - .:/app # Bind mount for real-time development
       - /app/node_modules # Prevent overwriting node_modules
+    environment:
+      - NODE_ENV=development
     # env_file:
     #   - ./.env # Load environment variables from .env file
     # depends_on:
     #   - mongodb
     #   - redis
     command: npm run dev # Start with nodemon for auto-reloading
+  
+#   mongo:
+#     image: mongo
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: gaurav
+#       MONGO_INITDB_ROOT_PASSWORD: rawat
+#     volumes:
+#       - mongodb: /data/db
+
+# volumes:
+#   mongodb

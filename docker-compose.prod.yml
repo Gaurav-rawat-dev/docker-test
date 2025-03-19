@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  app:
+    container_name: node-container
+    image: node-image
+    build: 
+      context: .
+      args:
+        - NODE_ENV=production
+    ports:
+      - 3000:4000
+    volumes: []
+    environment:
+      - NODE_ENV=production
+      # - .:/app:ro
+      # - /app/node_modules
+      #  however in production code no volumes are  required as these are only used for developmet and hence 
+      # volumes: []
+    command: node index.js
