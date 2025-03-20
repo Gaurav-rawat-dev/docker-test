@@ -18,3 +18,14 @@ docker run container  : docker run -d -v "${PWD}:/app" -v /app/node_modules -p 3
    now whenever we will run the development file , we will be using the command 
    docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d 
    so this command will run the : docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build 
+
+
+
+   =====================running mongo continer=======================
+   After the setup for the mongo contir inside the docker compose yml file, we just for ouself verify weather the things are working as they should , save data, retrieve date even after the container is topped. so we will first have to go inside the mogno contaier shell: 
+
+   step one :  docker exec -it mongo-container /bin/bash  enter into the mogno bash 
+step two : mongosh
+step three :  auth user self as a valid connection users , use admin, db.auth("gaurav","rawat")
+step four : then we cam run our mongo commands 
+use mydb, db.createCollection("users"), db.uers.insertOne({name : "gaurav"}), db.users.find()
