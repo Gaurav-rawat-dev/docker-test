@@ -4,7 +4,10 @@ services:
   app:
     container_name: node-container
     image: node-image
-    build: .
+    build: 
+      context: .
+      args:
+        - NODE_ENV=development
     ports:
       - "3000:4000" # Exposes Node.js application on port 3000
     volumes:
@@ -15,17 +18,10 @@ services:
     # env_file:
     #   - ./.env # Load environment variables from .env file
     # depends_on:
-    #   - mongodb
-    #   - redis
+    #   - mongo
     command: npm run dev # Start with nodemon for auto-reloading
   
-#   mongo:
-#     image: mongo
-#     environment:
-#       MONGO_INITDB_ROOT_USERNAME: gaurav
-#       MONGO_INITDB_ROOT_PASSWORD: rawat
-#     volumes:
-#       - mongodb: /data/db
+ 
 
-# volumes:
-#   mongodb
+volumes:
+  mongodb: {} # Ensure this is correctly formatted
