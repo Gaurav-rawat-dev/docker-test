@@ -1,5 +1,7 @@
 // Load environment variables
 const mongoose = require("mongoose");
+const {PORT}  = require("./config/config")
+
 require('dotenv').config();
 
 const express = require('express');
