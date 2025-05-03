@@ -26,6 +26,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=rawat
     volumes:
       - mongodb:/data/db # Corrected syntax
+  
 
 volumes:
   mongodb: {} # Ensured proper volume declaration
