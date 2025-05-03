@@ -1,14 +1,11 @@
 // Load environment variables
+require('dotenv').config();
 const mongoose = require("mongoose");
 const {PORT}  = require("./config/config")
 
-require('dotenv').config();
 
 const express = require('express');
 const app = express();
-
-
-
 
 const mongoURI = process.env.MONGO_URI || "mongodb://gaurav:rawat@mongo:27017/mydatabase?authSource=admin";
 
@@ -19,9 +16,6 @@ mongoose
 
 
 
-// Use environment variables
-// const PORT = process.env.PORT || 3000;
-// const PORT = 4000
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Middleware to log requests (only in development)
