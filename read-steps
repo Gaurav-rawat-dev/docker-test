@@ -32,3 +32,10 @@ step four : then we cam run our mongo commands
        or simpply qwe can do that by using the below command 
 **  docker exec -it mongo-container mongosh -u gaurav -p rawat --authenticationDatabase admin
 use mydb, db.createCollection("users"), db.uers.insertOne({name : "gaurav"}), db.users.find()
+
+
+
+============================================== Depend son ====
+
+only used when a servcie is depends on another service to work properly, as node js depends on mogno for the complete backend application, 
+however if you do not want to up and run the another service  we can use --no-deps argument to start the only desired service. 

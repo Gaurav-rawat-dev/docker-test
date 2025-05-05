@@ -12,8 +12,8 @@ services:
     #   - /app/node_modules # Prevent overwriting node_modules
     env_file:
       - .env # Load environment variables from .env file
-    # depends_on:
-    #   - mongo
+    depends_on:
+      - mongo
     #   - redis
     # command: npm run dev # Start with nodemon for auto-reloading
 

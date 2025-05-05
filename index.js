@@ -1,7 +1,7 @@
 // Load environment variables
 require('dotenv').config();
 const mongoose = require("mongoose");
-const {PORT, MONGO_IP, MONGO_PASSWORD, MONGO_PORT, MONGO_USER}  = require("./config/config")
+const { PORT, MONGO_IP, MONGO_PASSWORD, MONGO_PORT, MONGO_USER } = require("./config/config")
 
 
 const express = require('express');
@@ -9,11 +9,19 @@ const app = express();
 
 const mongoURI = process.env.MONGO_URI || `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/mydatabase?authSource=admin`;
 
-mongoose
-  .connect(mongoURI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch((err) => console.error("MongoDB Connection Error:", err));
+const ConnectWithRetry = () => {
+  mongoose
+    .connect(mongoURI)
+    .then(() => console.log("MongoDB Connected"))
+    .catch((err) => {
+      console.error("MongoDB Connection Error:", err)
+      setTimeout(ConnectWithRetry, 5000)
+    });
 
+
+}
+
+ConnectWithRetry()
 
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
