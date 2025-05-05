@@ -6,7 +6,7 @@ services:
     image: node-image
     # build: .
     # ports:
-    #   - "3000:3000" # Exposes Node.js application on port 3000
+    #   - "4000:3000" # Exposes Node.js application on port 4000
     # volumes:
     #   - .:/app # Bind mount for real-time development
     #   - /app/node_modules # Prevent overwriting node_modules
