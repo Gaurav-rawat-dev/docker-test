@@ -4,8 +4,12 @@ const mongoose = require("mongoose");
 const { PORT, MONGO_IP, MONGO_PASSWORD, MONGO_PORT, MONGO_USER } = require("./config/config")
 
 
+const postRoutes = require("./routes/postroutes")
+
+
 const express = require('express');
 const app = express();
+app.use(express.json())
 
 const mongoURI = process.env.MONGO_URI || `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/mydatabase?authSource=admin`;
 
@@ -38,6 +42,8 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 app.get('/', (req, res) => {
   res.send(`Hello, World! Running in ${NODE_ENV}. and now    `);
 });
+
+app.use("/api/v1/post", postRoutes)
 
 // Start the server
 app.listen(PORT, () => {
