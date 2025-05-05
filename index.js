@@ -1,13 +1,13 @@
 // Load environment variables
 require('dotenv').config();
 const mongoose = require("mongoose");
-const {PORT}  = require("./config/config")
+const {PORT, MONGO_IP, MONGO_PASSWORD, MONGO_PORT, MONGO_USER}  = require("./config/config")
 
 
 const express = require('express');
 const app = express();
 
-const mongoURI = process.env.MONGO_URI || "mongodb://gaurav:rawat@mongo:27017/mydatabase?authSource=admin";
+const mongoURI = process.env.MONGO_URI || `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/mydatabase?authSource=admin`;
 
 mongoose
   .connect(mongoURI)

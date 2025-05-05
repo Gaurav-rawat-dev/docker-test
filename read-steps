@@ -28,4 +28,7 @@ docker run container  : docker run -d -v "${PWD}:/app" -v /app/node_modules -p 3
 step two : mongosh
 step three :  auth user self as a valid connection users , use admin, db.auth("gaurav","rawat")
 step four : then we cam run our mongo commands 
+
+       or simpply qwe can do that by using the below command 
+**  docker exec -it mongo-container mongosh -u gaurav -p rawat --authenticationDatabase admin
 use mydb, db.createCollection("users"), db.uers.insertOne({name : "gaurav"}), db.users.find()
