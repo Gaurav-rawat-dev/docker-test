@@ -5,6 +5,7 @@ const { PORT, MONGO_IP, MONGO_PASSWORD, MONGO_PORT, MONGO_USER } = require("./co
 
 
 const postRoutes = require("./routes/postroutes")
+const userRoutes = require("./routes/userRoutes")
 
 
 const express = require('express');
@@ -44,7 +45,10 @@ app.get('/', (req, res) => {
 });
 
 app.use("/api/v1/post", postRoutes)
+app.use("/api/v1/user", userRoutes)
 
+
+app.use("*", (req, res) => res.status(404).json({ error: "Route not found" }));
 // Start the server
 app.listen(PORT, () => {
   console.log(`Express Server is running on port ${PORT}`);
