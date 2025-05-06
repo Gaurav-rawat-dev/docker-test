@@ -1,7 +1,10 @@
 // Load environment variables
 require('dotenv').config();
 const mongoose = require("mongoose");
-const { PORT, MONGO_IP, MONGO_PASSWORD, MONGO_PORT, MONGO_USER } = require("./config/config")
+const { RedisStore } = require("connect-redis")
+const session = require("express-session")
+const redisClient = require("./redis/redis")
+const { PORT, MONGO_IP, MONGO_PASSWORD, MONGO_PORT, MONGO_USER, REDIS_HOST, REDIS_PORT, SESSION_SECRET } = require("./config/config")
 
 
 const postRoutes = require("./routes/postroutes")
@@ -11,6 +14,29 @@ const userRoutes = require("./routes/userRoutes")
 const express = require('express');
 const app = express();
 app.use(express.json())
+
+
+
+
+const store = new RedisStore({
+  client: redisClient,
+  prefix: "sess:",
+});
+app.use(
+  session({
+    store: store,
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      secure: false,
+      httpOnly: true,
+      maxAge: 1000 * 30, // 30 seconds 
+    },
+  })
+);
+
+
 
 const mongoURI = process.env.MONGO_URI || `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/mydatabase?authSource=admin`;
 

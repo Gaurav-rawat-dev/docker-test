@@ -1,3 +1,4 @@
+const session = require("express-session")
 const Post = require("../models/postModel")
 
 exports.getAllPosts = async (req, res, next) => {
@@ -28,6 +29,7 @@ exports.getOPnePost = async (req, res, nmext) => {
 exports.createPost =  async (req, res, nmext) => {
     try {
         const posts = await Post.create(req.body)
+
         res.status(200).json({
             status: "post created",
             data: posts
