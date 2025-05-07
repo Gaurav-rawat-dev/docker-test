@@ -2,7 +2,7 @@
 
 services:
   app:
-    container_name: node-container
+    # container_name: node-container
     image: node-image
     # build: .
     # ports:

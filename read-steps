@@ -56,3 +56,6 @@ Nginx देखता है कि URL /api/ से शुरू हो रह�
 
 यानी Nginx खुद उस URL को इस तरह forward करता है:
 http://app:3000/api/v1
+
+**=> if i have to make multiple instance of a node js app, then by simply sing the nginx command 
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build --scale app=2 , i can use as many as instance i want 
