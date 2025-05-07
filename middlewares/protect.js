@@ -3,6 +3,7 @@ const redisClient = require("../redis/redis")
 
 const protect = async (req,res,next)=>{
     const sessionId = req.sessionID
+    console.log(sessionId, "=========session id ===============")
     const sessionKey = `sess:${sessionId}`
     const sessionData = await redisClient.get(sessionKey)
     if(!sessionData){

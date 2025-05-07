@@ -1,5 +1,6 @@
 const express = require("express")
 const authcontoller = require("../controller/authContoller")
+const protect = require("../middlewares/protect")
 
 const router = express.Router()
 
@@ -14,7 +15,7 @@ router
 
     router
     .route("/")
-    .get(authcontoller.getUsers)
+    .get(protect, authcontoller.getUsers)
 
 
     module.exports = router

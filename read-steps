@@ -43,3 +43,16 @@ however if you do not want to up and run the another service  we can use --no-de
 Error response from daemon: driver failed programming external connectivity on endpoint node-container (19494a28091863b78f797451503ea37e4100e48cffe907e5a17cf906049becb3): Bind for 0.0.0.0:3000 failed: port is already allocated, if port o already located then ned to end kill the port 3000 which is runnig with the commands below
  --> netstat -aon | findstr :3000
  -->   TCP    0.0.0.0:3000     0.0.0.0:0     LISTENING     12345
+
+
+curl http://localhost:3000/api/v1
+
+little about location proxy pass of nginc conf
+जब कोई यूज़र ये URL एक्सेस करता है:
+http://localhost:3000/api/v1
+Nginx देखता है कि URL /api/ से शुरू हो रहा है ✅
+
+फिर Nginx उस request को Docker नेटवर्क के अंदर मौजूद app नाम के सर्वर (Node.js) पर port 3000 पर भेज देता है
+
+यानी Nginx खुद उस URL को इस तरह forward करता है:
+http://app:3000/api/v1

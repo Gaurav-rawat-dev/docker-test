@@ -66,7 +66,7 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 // }
 
 // Sample route
-app.get('/', (req, res) => {
+app.get('/api/v1', (req, res) => {
   res.send(`Hello, World! Running in ${NODE_ENV}. and now    `);
 });
 
